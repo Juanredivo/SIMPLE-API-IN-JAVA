@@ -15,6 +15,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
+    private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
+    
+    public User(){
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -23,7 +34,6 @@ public class User {
         this.id = id;
     }
 
-    private String name;
     public String getName() {
         return name;
     }
@@ -32,8 +42,6 @@ public class User {
         this.name = name;
     }
 
-    private String email;
-    
     public String getEmail() {
         return email;
     }
@@ -41,10 +49,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "department_id")
-    private Department department;
 
     public Department getDepartment() {
         return department;
@@ -54,7 +58,4 @@ public class User {
         this.department = department;
     }
 
-    public User(){
-        
-    }
 }
